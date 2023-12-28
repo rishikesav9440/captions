@@ -1,9 +1,11 @@
 import '../styles/header.css'
 
-export default function Header() {
+function Header() {
   return (
     <div className='header-container'>
         <h1>AI Caption Generator</h1>
     </div>
   )
 }
+
+export default Header;

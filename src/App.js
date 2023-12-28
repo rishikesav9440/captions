@@ -1,10 +1,12 @@
-import Header from "./components/header.js";
+import Header from "./components/Header.js";
+import Explain from "./components/Explain.js";
 
 function App() {
 
   return (
     <>
       <Header />
+      <Explain />
     </>
     
   );
