@@ -1,41 +1,39 @@
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+import Alert from '@mui/material/Alert';
+import VisuallyHiddenInput from "./VisuallyHiddenInput.js"
 import { useState } from 'react';
-import '../styles/upload.css'
-
-
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1,
-});
+import '../styles/upload.css';
 
 function Upload() {
   const [responseText, setResponseText] = useState('');
+  const [correctExtension, setCorrectExtension] = useState(true)
 
   const handleFileChange = async (event) => {
     const selectedFile = event.target.files[0];
-
+  
     if (selectedFile) {
+      const fileExtension = selectedFile.name.split('.').pop().toLowerCase();
+      const fileSizeInMB = selectedFile.size / (1024 * 1024);
+  
+      if (fileSizeInMB > 30 || fileExtension !== 'mp4') {
+        setCorrectExtension(false);
+        return;
+      }
+  
       const formData = new FormData();
       formData.append('file', selectedFile);
-
+  
       try {
         const response = await fetch('http://143.198.16.8/upload', {
           method: 'POST',
           body: formData,
         });
-
+  
         if (response.ok) {
           const text = await response.text();
           setResponseText(text);
+          setCorrectExtension(true);
           console.log('Server response:', text);
         } else {
           console.error('Failed to upload file. Server returned:', response.status);
@@ -45,13 +43,24 @@ function Upload() {
       }
     }
   };
+  
 
   return (
     <div className='upload-container'>
-      <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
-        Upload file
-        <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-      </Button>
+      {!responseText && !correctExtension && (
+        <>
+          <Alert severity="warning">File must end in .mp4 and be less than 30mb</Alert>
+          <br/>
+        </>
+      )}
+      {!responseText && (
+        <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+          Upload file
+          <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+        </Button>
+      )}
+      <br />
+      
     </div>
   );
 }
