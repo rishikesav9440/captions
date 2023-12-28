@@ -1,0 +1,17 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #E6EDF3;
+    font-family: 'Mono Sans', monospace;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 8vh;
+    font-family: 'Mono Sans', monospace;
+    font-weight: bold;
+}
+
+  

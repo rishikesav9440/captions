@@ -1,8 +1,10 @@
+import Header from "./components/header.js";
+
 function App() {
 
   return (
     <>
-      <h1>Hello Word</h1>
+      <Header />
     </>
     
   );
