@@ -1,21 +1,8 @@
 {
-    "headers": [
+    "rewrites": [
       {
         "source": "/upload",
-        "headers": [
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          },
-          {
-            "key": "Access-Control-Allow-Methods",
-            "value": "POST"
-          },
-          {
-            "key": "Access-Control-Allow-Headers",
-            "value": "Content-Type"
-          }
-        ]
+        "destination": "http://143.198.16.8/upload"
       }
     ]
   }
