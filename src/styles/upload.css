@@ -6,3 +6,32 @@
     padding-top: 30px;
   }
   
+  .srt-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    width: 75vw;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #161B22;
+    border: 2px solid #30363D;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+}
+
+.srt-container h2 {
+    font-size: 5vh;
+    font-family: 'Mono Sans', monospace;
+    color: #E6EDF3; 
+    font-weight: bold;
+    margin: 0; /* Add this line to remove default margin */
+}
+
+.srt-container p {
+    color: #E6EDF3; 
+    font-size: 2vh; 
+    margin-bottom: 10px;
+}
