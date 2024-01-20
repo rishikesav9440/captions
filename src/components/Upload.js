@@ -32,7 +32,7 @@ function Upload() {
       formData.append('file', selectedFile);
   
       try {
-        const response = await fetch('http://143.198.16.8/upload', {
+        const response = await fetch('https://captions-chi.vercel.app/upload', {
           method: 'POST',
           body: formData,
         });
